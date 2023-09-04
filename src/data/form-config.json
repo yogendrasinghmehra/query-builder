@@ -1,0 +1,26 @@
+[
+  { 
+  "id": "filterBy",
+  "label": "Filter By",
+  "type": "select",
+  "value": ""
+},
+{ 
+  "id": "clinetid",
+  "label": "Client Number",
+  "type": "text",
+  "value": ""
+},
+{
+  "id": "memberid",
+  "label": "Member",
+  "type": "text",
+  "value": ""
+},
+{
+  "id": "rememberMe",
+  "label": "Remember Me",
+  "type": "checkbox",
+  "value": true
+}
+  ]
