@@ -26,17 +26,18 @@ const TreeNodeItem: React.FC<{ node: TreeNode,selectedValue:string,onChange:(val
         { node.children ? 
         ( 
         <button onClick={toggleCollapse} className="btn btn-link">
-          {isCollapsed ? <i className="bi bi-plus"></i> : <i className="bi bi-dash"></i>}
+          {isCollapsed ? <i className="bi bi-plus fs-2"></i> : <i className="bi bi-dash fs-2"></i>}
         </button>
          ) : !node.isParentNode ? (
            <input 
             type='radio' 
+            className='fs-2'
             checked={selectedValue === node.value}
             onChange={() => onChange(node.value)}></input>)
          :'' 
         }
        
-        <span className='ml-3'>{node.label}</span>
+        <span className='ms-2'>{node.label}</span>
       </div>
       {!isCollapsed && node.children && (
         <ul className='list-group'>
