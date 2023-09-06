@@ -14,7 +14,7 @@ const App = () => {
                 <div className="row">
                     <main className="col-md-9 ms-sm-auto col-lg-9 px-md-3">
                         <Routes>
-                            <Route path="/" element={<Dashboard />} />
+                            <Route path="/home" element={<Dashboard />} />
                             <Route path="/report" element={<Report />} />
                             {/* Error route */}
                             <Route path="*" element={<Error />} />
