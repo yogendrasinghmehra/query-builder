@@ -95,7 +95,7 @@ const Dashboard = () => {
         </Tab>
         <Tab eventKey="advance" title="Advance">
           <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 className="h2">Client Report</h1>
+            <h5>Add Report Filter</h5>
           </div>
           <CustomQueryBuilder></CustomQueryBuilder>
         </Tab>

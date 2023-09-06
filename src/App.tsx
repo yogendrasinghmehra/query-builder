@@ -17,7 +17,7 @@ const App = () => {
                             <Route path="/home" element={<Dashboard />} />
                             <Route path="/report" element={<Report />} />
                             {/* Error route */}
-                            <Route path="*" element={<Error />} />
+                            <Route path="*" element={<Dashboard />} />
                         </Routes>
                     </main>
                     <nav id="sidebarMenu" className="col-md-3 col-lg-3 d-md-block sidebar collapse">
