@@ -1,7 +1,7 @@
 {
   "name": "query-builder",
   "version": "0.1.0",
-  "homepage": "https://yogendrasinghmehra.github.io/",
+  "homepage": "https://yogendrasinghmehra.github.io/query-builder/",
   "private": true,
   "dependencies": {
     "@react-querybuilder/bootstrap": "^6.5.1",
