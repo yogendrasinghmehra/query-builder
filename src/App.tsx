@@ -12,7 +12,7 @@ const App = () => {
             <Header />
             <div className="container-fluid">
                 <div className="row">
-                    <main className="col-md-8 ms-sm-auto col-lg-9 px-md-4">
+                    <main className="col-md-9 ms-sm-auto col-lg-9 px-md-3">
                         <Routes>
                             <Route path="/" element={<Dashboard />} />
                             <Route path="/report" element={<Report />} />
@@ -20,7 +20,7 @@ const App = () => {
                             <Route path="*" element={<Error />} />
                         </Routes>
                     </main>
-                    <nav id="sidebarMenu" className="col-md-4 col-lg-3 d-md-block sidebar collapse">
+                    <nav id="sidebarMenu" className="col-md-3 col-lg-3 d-md-block sidebar collapse">
                     <Sidebar></Sidebar>
                     </nav>
                    

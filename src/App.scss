@@ -1,5 +1,13 @@
+
+
 @import '~bootstrap/scss/bootstrap';
 @import url('./styles/queryBuilder.scss');
+
+body {
+
+font-family: 'Open Sans', sans-serif;
+
+}
 
 #sidebarMenu{
     height: 90vh;
