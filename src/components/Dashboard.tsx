@@ -40,10 +40,10 @@ const Dashboard = () => {
               id: 3,
               label: 'Member by Location',
               value: 'rwerw'
-              
+
             },
           ]
-          
+
         },
       ]
     },
@@ -84,29 +84,44 @@ const Dashboard = () => {
         defaultActiveKey="profile"
         id="fill-tab-example"
         className="nav nav-tabs nav-tabs-bordered mt-3"
-        
+
         activeKey={key}
         onSelect={(k) => setKey(k)}>
         <Tab eventKey="basic" title="Basic">
-          <TreeView data={treeData}
-            selectedValue={selectedValue}
-            onChange={handleRadioChange} />
-          <hr />
-          <div className="text-center">
-            <button
-              className='btn btn-primary'
-              onClick={handleClick}
-              disabled={isLoading || selectedValue === ''}><i className="bi bi-bar-chart"></i> {isLoading ? 'Generating Report...' : 'Get Report'}</button>
+          <div className="row mt-3">
+            <div className="col md-3 col-lg-3">
+              <div className="card">
+                <div className="card-body">
+                  <span className="card-title">Choose Report Type</span>
+                  <TreeView data={treeData}
+                    selectedValue={selectedValue}
+                    onChange={handleRadioChange} />
+                </div>
+                <div className="card-footer text-center">
+                  <button
+                    className='btn btn-primary btn-sm'
+                    onClick={handleClick}
+                    disabled={isLoading || selectedValue === ''}><i className="bi bi-bar-chart"></i> {isLoading ? 'Generating Report...' : 'Get Report'}</button>
 
-          </div>
-          {showReport === true && isLoading === false?  
-          <div className="card mt-3">
-            <div className='card-body p-3 float-right'>
-            <h5 className="card-title">Client <span>/Report</span></h5>
-            <Report />
+                </div>
+              </div>
             </div>
-          </div> : '' }
-         
+            <div className="col md-9 col lg-9">
+              {showReport === true && isLoading === false ?
+                <div className="card ">
+                  
+                  <div className='card-body p-3 float-right'>
+                  <div className="row">
+                      <div className="col-md-10"><h5 className="card-title">Client <span>/Report</span></h5></div>
+                      <div className="col-md-2 card-title text-end"><button className='btn btn-outline-primary btn-sm'><i className="bi bi-arrow-bar-down"></i> Export</button></div>
+                    </div>                  
+                    <Report />
+                  </div>
+                </div> : <div className="no-record-found">
+                  {isLoading ? 'Loading report data...' : "No records found."}
+                </div>}
+            </div>
+          </div>
         </Tab>
         <Tab eventKey="advance" title="Advance">
           <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">

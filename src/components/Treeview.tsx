@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import  '../styles/treeview.scss';
 
 interface TreeNode {
   id: number;
@@ -24,15 +25,15 @@ const TreeNodeItem: React.FC<{ node: TreeNode,selectedValue:string,onChange:(val
   };
 
   return (
-    <li className='list-group-item'>
+    <li className='list-group-item p-1'>
       <div className="d-flex align-items-center">
         { node.children ? 
         ( 
         <button onClick={toggleCollapse} className="btn btn-link">
-          {isCollapsed ? <i className="bi bi-plus fs-2"></i> : <i className="bi bi-dash fs-2"></i>}
+          {isCollapsed ? <i className="bi bi-plus treeview-icon"></i> : <i className="bi bi-dash treeview-icon"></i>}
         </button>
          ) : !node.isParentNode ? (
-          <div className="form-check">
+          <div className="form-check ps-5">
             <input 
             type='radio' 
             className="form-check-input"

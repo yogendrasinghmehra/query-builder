@@ -225,8 +225,8 @@
   }
   
   .card-title {
-    padding: 20px 0 15px 0;
-    font-size: 18px;
+    padding: 15px 0 10px 0;
+    font-size: 16px;
     font-weight: 500;
     color: #012970;
     font-family: "Poppins", sans-serif;
@@ -372,7 +372,7 @@
   .header {
     transition: all 0.5s;
     z-index: 997;
-    height: 60px;
+    height: 95vh;
     box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
     background-color: #fff;
     padding-left: 20px;
@@ -1225,4 +1225,14 @@
     font-size: 13px;
     color: #012970;
   }
+
+  // Custom styles for the "No Record Found" message
+.no-record-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px; /* Adjust the height as needed */
+  font-size: 20px; /* Text size */
+  border-radius: 5px; /* Rounded corners */
+}
 
