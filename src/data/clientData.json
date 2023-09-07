@@ -1,35 +1,50 @@
 {
-  "headers": ["ClientId","Client Name", "Age", "City"],
+  "headers": ["#","Client Name","Plan Number", "Age", "City","Price","Status"],
   "data": [
     {
       "id":1,
       "name": "John",
+      "planNumber":12342,
       "age": 30,
-      "city": "New York"
+      "city": "New York",
+      "price":"$89",
+      "status":"1"
     },
     {
       "id":2,
       "name": "Alice",
+      "planNumber":90989,
       "age": 25,
-      "city": "Los Angeles"
+      "city": "Los Angeles",
+      "price":"$234",
+      "status":"2"
     },
     {
       "id":3,
       "name": "Bob",
+      "planNumber":40987,
       "age": 35,
-      "city": "Chicago"
+      "city": "Chicago",
+      "price":"$980",
+      "status":"3"
     },
     {
       "id":4,
       "name": "Eva",
+      "planNumber":40343,
       "age": 28,
-      "city": "San Francisco"
+      "city": "San Francisco",
+      "price":"$234",
+      "status":"1"
     },
     {
       "id":5,
       "name": "John",
+      "planNumber":34532,
       "age": 30,
-      "city": "New York"
+      "city": "New York",
+      "price":"$234",
+      "status":"2"
     }
    
   ]

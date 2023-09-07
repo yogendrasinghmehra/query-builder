@@ -4,8 +4,11 @@ import clientData from '../data/clientData.json';
 interface Client {
   id:number;
   name: string;
+  planNumber:number
   age: number;
   city: string;
+  price:string;
+  status:string;
 }
 interface Data
 {
@@ -26,8 +29,7 @@ const Report = () => {
 
   return (
     <div className='table-responsive'>
-    <h5>Client Data</h5>
-    <Table striped bordered hover>
+    <Table className='table table-hover'>
       <thead>
         <tr>
           {rowData?.headers.map((header)=>(
@@ -41,8 +43,11 @@ const Report = () => {
           <tr key={row.id}>
             <td>{row.id}</td>
             <td>{row.name}</td>
+            <td>{row.planNumber}</td>
             <td>{row.age}</td>
             <td>{row.city}</td>
+            <td>{row.price}</td>
+            <td>{row.status === "1" ? <span className='badge bg-success'>Active</span> : row.status === "2" ? <span className='badge bg-warning'>Inactive</span> : row.status ==="3" ? <span className='badge bg-danger'>Terminated</span> : ""}</td>
           </tr>
         ))}
       </tbody>

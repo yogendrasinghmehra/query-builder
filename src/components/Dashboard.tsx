@@ -29,7 +29,21 @@ const Dashboard = () => {
         {
           id: 3,
           label: 'Client Memeber List',
-          value: 'ClientMemberList'
+          value: 'ClientMemberList',
+          children: [
+            {
+              id: 2,
+              label: 'Member By Benefit',
+              value: 'dsa',
+            },
+            {
+              id: 3,
+              label: 'Member by Location',
+              value: 'rwerw'
+              
+            },
+          ]
+          
         },
       ]
     },
@@ -69,8 +83,8 @@ const Dashboard = () => {
       <Tabs
         defaultActiveKey="profile"
         id="fill-tab-example"
-        className="mt-3"
-        fill
+        className="nav nav-tabs nav-tabs-bordered mt-3"
+        
         activeKey={key}
         onSelect={(k) => setKey(k)}>
         <Tab eventKey="basic" title="Basic">
@@ -88,6 +102,7 @@ const Dashboard = () => {
           {showReport === true && isLoading === false?  
           <div className="card mt-3">
             <div className='card-body p-3 float-right'>
+            <h5 className="card-title">Client <span>/Report</span></h5>
             <Report />
             </div>
           </div> : '' }

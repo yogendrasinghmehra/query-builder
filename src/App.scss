@@ -2,16 +2,10 @@
 
 @import '~bootstrap/scss/bootstrap';
 @import url('./styles/queryBuilder.scss');
+@import url('./styles/globalStyle.scss');
 
-body {
-
-font-family: 'Open Sans', sans-serif;
-}
-
-#sidebarMenu{
-    height: 90vh;
-    border-left: 2px solid #dee2e6
-  }
+.form-check-input{ border:0.1rem solid #0a58ca;}
+// .list-group-item{padding: 0.2rem;}
 
 
   

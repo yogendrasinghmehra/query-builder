@@ -19,6 +19,9 @@ const TreeNodeItem: React.FC<{ node: TreeNode,selectedValue:string,onChange:(val
   const toggleCollapse = () => {
     setCollapsed(!isCollapsed);
   };
+  const handleChange = (value:string) => {
+    onChange(value);
+  };
 
   return (
     <li className='list-group-item'>
@@ -29,15 +32,20 @@ const TreeNodeItem: React.FC<{ node: TreeNode,selectedValue:string,onChange:(val
           {isCollapsed ? <i className="bi bi-plus fs-2"></i> : <i className="bi bi-dash fs-2"></i>}
         </button>
          ) : !node.isParentNode ? (
-           <input 
+          <div className="form-check">
+            <input 
             type='radio' 
-            className='fs-2'
+            className="form-check-input"
+            name="flexRadioDefault" 
+            id="flexRadioDefault1"
             checked={selectedValue === node.value}
-            onChange={() => onChange(node.value)}></input>)
-         :'' 
-        }
-       
-        <span className='ms-2'>{node.label}</span>
+            onChange={() => onChange(node.value)}></input>                     
+        </div>
+           ): '' 
+        }               
+        <label className="form-check-label">
+        {node.label}
+          </label>
       </div>
       {!isCollapsed && node.children && (
         <ul className='list-group'>
@@ -46,7 +54,7 @@ const TreeNodeItem: React.FC<{ node: TreeNode,selectedValue:string,onChange:(val
             key={child.id} 
             node={child}
             selectedValue={selectedValue}
-            onChange={() => onChange(child.value)}
+            onChange={handleChange}
             />
           ))}
         </ul>
