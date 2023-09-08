@@ -8,11 +8,24 @@ const Dashboard = () => {
   const [selectedValue, setSelectedValue] = useState<string>('');
   const [isLoading, setIsLoading] = useState(false);
   const [showReport, setShowReportStaus] = useState(false);
+  const [clientId, setClientId] = useState<string>('');
   const [key, setKey] = useState<any>('basic');
 
   const handleRadioChange = (value: string) => {
     setSelectedValue(value);
   };
+  const handleClientIdInputChange = (event: any) => {
+    const value = event.target.value;
+    // Check if the input value is a valid 6-digit number
+    if (/^\d{0,6}$/.test(value)) {
+      setClientId(value);
+    }
+  };
+
+  const handleClientClear= ()=>{
+    setClientId('');
+    setShowReportStaus(false);
+  }
 
   const treeData = [
     {
@@ -96,12 +109,28 @@ const Dashboard = () => {
                   <TreeView data={treeData}
                     selectedValue={selectedValue}
                     onChange={handleRadioChange} />
+                  {/* <div className="form-group mt-3">                
+                    
+                  </div> */}
+                  <div className="input-group mt-3">
+                  <input 
+                    type='text' 
+                    className='form-control' 
+                    placeholder='Enter client id'
+                    value={clientId}
+                    onChange={handleClientIdInputChange}></input>
+                    <button 
+                    className="input-group-text" 
+                    id="basic-addon2"
+                    onClick={handleClientClear}>
+                      <i className="bi bi-x-circle"></i></button>
+                  </div>
                 </div>
                 <div className="card-footer text-center">
                   <button
                     className='btn btn-primary btn-sm'
                     onClick={handleClick}
-                    disabled={isLoading || selectedValue === ''}><i className="bi bi-bar-chart"></i> {isLoading ? 'Generating Report...' : 'Get Report'}</button>
+                    disabled={isLoading || selectedValue === '' || clientId.length < 6}><i className="bi bi-bar-chart"></i> {isLoading ? 'Generating Report...' : 'Get Report'}</button>
 
                 </div>
               </div>
@@ -109,13 +138,13 @@ const Dashboard = () => {
             <div className="col md-9 col lg-9">
               {showReport === true && isLoading === false ?
                 <div className="card ">
-                  
+
                   <div className='card-body p-3 float-right'>
-                  <div className="row">
+                    <div className="row">
                       <div className="col-md-10"><h5 className="card-title">Client <span>/Report</span></h5></div>
                       <div className="col-md-2 card-title text-end"><button className='btn btn-outline-primary btn-sm'><i className="bi bi-arrow-bar-down"></i> Export</button></div>
-                    </div>                  
-                    <Report />
+                    </div>
+                    <Report Type={selectedValue} />
                   </div>
                 </div> : <div className="no-record-found">
                   {isLoading ? 'Loading report data...' : "No records found."}

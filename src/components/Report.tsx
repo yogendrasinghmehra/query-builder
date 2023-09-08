@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
 import clientData from '../data/clientData.json';
+
 interface Client {
   id:number;
   name: string;
-  planNumber:number
+  policyNumber:number
   age: number;
   city: string;
-  price:string;
+  effectiveDate:string;
   status:string;
 }
 interface Data
@@ -15,7 +16,11 @@ interface Data
   headers:string[];
   data:Client[]
 }
-const Report = () => {
+interface ReportProps
+{
+  Type:string
+}
+const Report:React.FC<ReportProps> = ({Type}) => {
 
   const [rowData, setData] = useState<Data>();
 
@@ -43,10 +48,10 @@ const Report = () => {
           <tr key={row.id}>
             <td>{row.id}</td>
             <td>{row.name}</td>
-            <td>{row.planNumber}</td>
+            <td>{row.policyNumber}</td>
             <td>{row.age}</td>
             <td>{row.city}</td>
-            <td>{row.price}</td>
+            <td>{row.effectiveDate}</td>
             <td>{row.status === "1" ? <span className='badge bg-success'>Active</span> : row.status === "2" ? <span className='badge bg-warning'>Inactive</span> : row.status ==="3" ? <span className='badge bg-danger'>Terminated</span> : ""}</td>
           </tr>
         ))}

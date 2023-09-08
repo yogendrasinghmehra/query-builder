@@ -10,19 +10,19 @@ const App = () => {
     return (
         <div className="App">
             <Header />
-            <div className="container-fluid">
+            <div className="container-fluid mt-5">
                 <div className="row">
-                    <main className="col-md-9 ms-sm-auto col-lg-9 px-md-3">
+                    <main className="col-md-12 ms-sm-auto col-lg-12 px-md-3">
                         <Routes>
                             <Route path="/home" element={<Dashboard />} />
-                            <Route path="/report" element={<Report />} />
+                            {/* <Route path="/report" element={<Report />} /> */}
                             {/* Error route */}
                             <Route path="*" element={<Dashboard />} />
                         </Routes>
                     </main>
-                    <nav id="sidebarMenu" className="col-md-3 col-lg-3 d-md-block sidebar collapse">
+                    {/* <nav id="sidebarMenu" className="col-md-3 col-lg-3 d-md-block sidebar collapse">
                     <Sidebar></Sidebar>
-                    </nav>
+                    </nav> */}
                    
                 </div>
             </div>

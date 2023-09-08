@@ -2,28 +2,34 @@ import React from "react";
 import AppModal from "../AppModal";
 import ClientFilter from "../ClientFilter";
 import { Link } from "react-router-dom";
+import { Nav, NavDropdown, Navbar } from "react-bootstrap";
 
 
 const Header = () => {
   const [modalShow, setModalShow] = React.useState(false);
   return (
     <>
-      <header className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">       
-        <Link to="/home" className="navbar-brand col-md-3 col-lg-2 me-0 px-3">Query Builder</Link>
-        {/* <button className="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button> */}
-
-        <div className="navbar-nav m-2">
-          <div className="nav-item">
-            {/* <input
-              type="button"
-              className="btn btn-sm btn-primary px-3"
-              value="Get Reports"
-              onClick={() => setModalShow(true)}></input> */}
-          </div>
-        </div>
-      </header>
+       <Navbar fixed="top"  expand="lg" bg="primary" data-bs-theme="dark">
+        <Navbar.Brand> <Link to="/home" className="navbar-brand col-md-3 col-lg-2 me-0 px-3">IntelliQuest</Link></Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Link className="nav-link active" to="/home">Home</Link>
+            <Link className="nav-link" to="/home">Report</Link>
+            {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">
+                Another action
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">
+                Separated link
+              </NavDropdown.Item>
+            </NavDropdown> */}
+          </Nav>
+        </Navbar.Collapse>
+    </Navbar>
       <AppModal
         showModal={modalShow}
         onHide={() => setModalShow(false)}

@@ -1,94 +1,94 @@
 {
-  "headers": ["#","Client Name","Plan Number", "Age", "Location","Price","Status"],
+  "headers": ["#","CLIENT NAME","POLICY NUMBER", "AGE", "LOCATION","EFFECTIVE DATE","STATUS"],
   "data": [
     {
       "id":1,
       "name": "John",
-      "planNumber":12342,
+      "policyNumber":12342,
       "age": 30,
       "city": "New York",
-      "price":"$89",
+      "effectiveDate":"2020-01-01",
       "status":"1"
     },
     {
       "id":2,
       "name": "Alice",
-      "planNumber":90989,
+      "policyNumber":90989,
       "age": 25,
       "city": "Los Angeles",
-      "price":"$234",
+      "effectiveDate":"2018-09-01",
       "status":"2"
     },
     {
       "id":3,
       "name": "Bob",
-      "planNumber":40987,
+      "policyNumber":40987,
       "age": 35,
       "city": "Chicago",
-      "price":"$980",
+      "effectiveDate":"2009-01-12",
       "status":"3"
     },
     {
       "id":4,
       "name": "Eva",
-      "planNumber":40343,
+      "policyNumber":40343,
       "age": 28,
       "city": "San Francisco",
-      "price":"$234",
+      "effectiveDate":"2019-01-01",
       "status":"1"
     },
     {
       "id":5,
       "name": "John",
-      "planNumber":34532,
+      "policyNumber":34532,
       "age": 30,
       "city": "New York",
-      "price":"$234",
+      "effectiveDate":"2019-01-01",
       "status":"2"
     },
     {
       "id":6,
       "name": "John",
-      "planNumber":12342,
+      "policyNumber":12342,
       "age": 30,
       "city": "New York",
-      "price":"$89",
+      "effectiveDate":"2019-01-01",
       "status":"1"
     },
     {
       "id":7,
       "name": "Alice",
-      "planNumber":90989,
+      "policyNumber":90989,
       "age": 25,
       "city": "Los Angeles",
-      "price":"$234",
+      "effectiveDate":"2019-01-01",
       "status":"2"
     },
     {
       "id":8,
       "name": "Bob",
-      "planNumber":40987,
+      "policyNumber":40987,
       "age": 35,
       "city": "Chicago",
-      "price":"$980",
+      "effectiveDate":"2019-01-01",
       "status":"3"
     },
     {
       "id":9,
       "name": "Eva",
-      "planNumber":40343,
+      "policyNumber":40343,
       "age": 28,
       "city": "San Francisco",
-      "price":"$234",
+      "effectiveDate":"2019-01-01",
       "status":"1"
     },
     {
       "id":10,
       "name": "John",
-      "planNumber":34532,
+      "policyNumber":34532,
       "age": 30,
       "city": "New York",
-      "price":"$234",
+      "effectiveDate":"2019-01-01",
       "status":"2"
     }
    
