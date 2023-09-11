@@ -68,12 +68,12 @@ const Dashboard = () => {
       children: [
         {
           id: 2,
-          label: 'Member Benefit List',
+          label: 'Member List By Client',
           value: 'MemberBenefitList',
         },
         {
           id: 3,
-          label: 'Active Memeber List',
+          label: 'Memeber List By Benefit',
           value: 'ActiveMemberList'
         },
       ],

@@ -5,6 +5,7 @@ import clientData from '../data/clientData.json';
 interface Client {
   id:number;
   name: string;
+  lastName: string;
   policyNumber:number
   age: number;
   city: string;
@@ -48,6 +49,7 @@ const Report:React.FC<ReportProps> = ({Type}) => {
           <tr key={row.id}>
             <td>{row.id}</td>
             <td>{row.name}</td>
+            <td>{row.lastName}</td>
             <td>{row.policyNumber}</td>
             <td>{row.age}</td>
             <td>{row.city}</td>
