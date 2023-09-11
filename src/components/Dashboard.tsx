@@ -112,7 +112,9 @@ const Dashboard = () => {
                   {/* <div className="form-group mt-3">                
                     
                   </div> */}
-                  <div className="input-group mt-3">
+                  <div className="form-group mt-3">
+                  <label>Client Id</label>
+                  <div className="input-group">
                   <input 
                     type='text' 
                     className='form-control' 
@@ -125,6 +127,8 @@ const Dashboard = () => {
                     onClick={handleClientClear}>
                       <i className="bi bi-x-circle"></i></button>
                   </div>
+                  </div>
+                 
                 </div>
                 <div className="card-footer text-center">
                   <button
