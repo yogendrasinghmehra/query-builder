@@ -48,6 +48,13 @@
     }
   }
   
+  .multi-select-dropdown
+  {
+    .list-group{
+      position: fixed;
+      z-index: 1;
+    }
+  }
   
   
   

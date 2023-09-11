@@ -1,0 +1,10 @@
+[
+    {
+        "id":"1",
+        "databaseName":"DataWhse"
+    },
+    {
+        "id":"2",
+        "databaseName":"VitalObjects"
+    }
+]

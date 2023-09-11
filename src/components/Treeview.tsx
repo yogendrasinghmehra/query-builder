@@ -37,14 +37,13 @@ const TreeNodeItem: React.FC<{ node: TreeNode,selectedValue:string,onChange:(val
             <input 
             type='radio' 
             className="form-check-input"
-            name="flexRadioDefault" 
-            id="flexRadioDefault1"
+            id={node.label}
             checked={selectedValue === node.value}
             onChange={() => onChange(node.value)}></input>                     
         </div>
            ): '' 
         }               
-        <label className="form-check-label">
+        <label className="form-check-label" htmlFor={node.label}>
         {node.label}
           </label>
       </div>
