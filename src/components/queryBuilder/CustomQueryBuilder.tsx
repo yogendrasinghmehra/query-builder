@@ -26,19 +26,19 @@ const options: Option[] = fields.map(val => ({
 }))
 
 interface Database {
-  id:string;
-  databaseName:string;
+  id: string;
+  databaseName: string;
 }
 
 interface DbTables {
-  id:string;
-  databaseId:string;
-  tableName:string;
-  displayName:string
+  id: string;
+  databaseId: string;
+  tableName: string;
+  displayName: string
 }
 
-let databaseList:Database[] = DatabaseList;
-let databaseTableList:DbTables[] = DbTableList 
+let databaseList: Database[] = DatabaseList;
+let databaseTableList: DbTables[] = DbTableList
 
 //#endregion
 
@@ -61,7 +61,7 @@ const CustomQueryBuilder = () => {
   }
   const handleMultiSelectChange = (newSelectedOptions: string[]) => {
     setSelectedOptions(newSelectedOptions);
-    setDbFields(fields.filter((f)=>newSelectedOptions.includes(f.value)))
+    setDbFields(fields.filter((f) => newSelectedOptions.includes(f.value)))
   };
 
   const handleDbChange = (db: any) => {
@@ -76,62 +76,68 @@ const CustomQueryBuilder = () => {
 
   return (
     <>
-      <div className="row">
-        <div className="col-md-6">
-          <div className="card mb-3">
-            <div className="card-body">
-              <div className="row">
-                <div className="col-md-4">
-                  <div className="form-group">
-                    <label>Select Database</label>
-                    <select
-                      className='form-control'
-                      onChange={(e) => handleDbChange(e)}>
-                      <option value="">Select</option>
-                      {databaseList.map(db=>(
-                        <option key={db.id} value={db.databaseName}>{db.databaseName}</option>   
-                      ))}
-                                   
-                    </select>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="form-group">
-                    <label>Select Tables</label>
-                    <select className='form-control'
-                      onChange={(e) => handleTableChange(e)}>
-                      <option value="">Select</option>
-                      {databaseTableList.map(dbTable=>(
-                        <option key={dbTable.id} value={dbTable.databaseId}>{dbTable.displayName}</option>   
-                      ))}
-                    </select>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="form-group">
-                    <label>Select Columns</label>
-                    <MultiSelectDropdown
-                      options={options}
-                      selectedOptions={selectedOptions}
-                      onChange={handleMultiSelectChange}
-                    />
+      <div className="card">
+        <div className="card-body">
+          <div className="row">
+            <div className="col-md-4">
+              <div className="form-group">
+                <label>Select Database</label>
+                <select
+                  className='form-control'
+                  onChange={(e) => handleDbChange(e)}>
+                  <option value="">Select</option>
+                  {databaseList.map(db => (
+                    <option key={db.id} value={db.databaseName}>{db.databaseName}</option>
+                  ))}
 
-                  </div>
-                </div>
-                <div className="col-md-12 mt-3">
-                  <QueryBuilderBootstrap>
-                    <QueryBuilder
-                      fields={dbFields}
-                      query={query}
-                      onQueryChange={handleQueryChange}
-                    />
-                  </QueryBuilderBootstrap>
-                </div>
+                </select>
               </div>
+            </div>
+            <div className="col-md-4">
+              <div className="form-group">
+                <label>Select Table</label>
+                <select className='form-control'
+                  onChange={(e) => handleTableChange(e)}>
+                  <option value="">Select</option>
+                  {databaseTableList.map(dbTable => (
+                    <option key={dbTable.id} value={dbTable.databaseId}>{dbTable.displayName}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="form-group">
+                <label>Select Columns</label>
+                <MultiSelectDropdown
+                  options={options}
+                  selectedOptions={selectedOptions}
+                  onChange={handleMultiSelectChange}
+                />
+
+              </div>
+            </div>
+            <div className="col-md-12 mt-3">
+              <QueryBuilderBootstrap>
+                <QueryBuilder
+                  fields={dbFields}
+                  query={query}
+                  onQueryChange={handleQueryChange}
+                />
+              </QueryBuilderBootstrap>
             </div>
           </div>
         </div>
+        <div className="card-footer text-center">
+          <button
+            className='btn btn-primary btn-sm'><i className="bi bi-bar-chart"></i> Get Report</button>
+
+        </div>
+      </div>
+      <div className="row">
         <div className="col-md-6">
+
+        </div>
+        {/* <div className="col-md-6">
           <div className="card">
             <div className="card-body">
               <div className="row">
@@ -156,7 +162,7 @@ const CustomQueryBuilder = () => {
 
 
           </div>
-        </div>
+        </div> */}
 
       </div>
 

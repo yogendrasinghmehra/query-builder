@@ -160,7 +160,19 @@ const Dashboard = () => {
           <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h5>Add Report Filter</h5>
           </div>
-          <CustomQueryBuilder></CustomQueryBuilder>
+          <div className="row">
+            <div className="col-md-5">
+             <CustomQueryBuilder></CustomQueryBuilder>
+            </div>
+            <div className="col-md-7">
+              <div className="card">
+                <div className="card-body">
+                <Report Type={selectedValue} />
+                </div>
+              </div>
+            </div>
+          </div>
+          
         </Tab>
       </Tabs>
 
