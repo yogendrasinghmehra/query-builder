@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
-import clientData from '../data/clientData.json';
+import clientData from './data/clientData.json';
 
 interface Client {
   id:number;
@@ -38,8 +38,8 @@ const Report:React.FC<ReportProps> = ({Type}) => {
     <Table className='table table-hover'>
       <thead>
         <tr>
-          {rowData?.headers.map((header)=>(
-            <th>{header}</th>
+          {rowData?.headers.map((header,index)=>(
+            <th key={index}>{header}</th>
           ))}
           
         </tr>

@@ -6,6 +6,8 @@
 
 .queryBuilder {
   min-width: 420px;
+  max-height: 60vh;
+  overflow-y: auto;
 }
 
 // Styles for when "Use validation" option is selected
