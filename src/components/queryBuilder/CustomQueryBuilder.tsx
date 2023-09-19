@@ -37,7 +37,7 @@ const CustomQueryBuilder = () => {
   };
   const handleMultiSelectChange = (newSelectedOptions: string[]) => {
     setSelectedOptions(newSelectedOptions);
-    setDbFields(dbFields.filter((f) => newSelectedOptions.includes(f.value)));
+    //setDbFields([...dbFields.filter((f) => newSelectedOptions.includes(f.value))]);
   };
 
   const handleServerChange = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -51,6 +51,7 @@ const CustomQueryBuilder = () => {
   };
   const handleTableChange = (table: any) => {
     setSelectedTable(table.target.value);
+    getColumnsList();
   };
 
   // getting server list
@@ -63,7 +64,6 @@ const CustomQueryBuilder = () => {
   const getDataBaseList = () => {
     axios.get("/data/databases.json").then((res) => {
       setDataBaseList(res.data);
-      getColumnsList();
     });
   };
 
@@ -78,12 +78,8 @@ const CustomQueryBuilder = () => {
   const getColumnsList = () => {
     axios.get("/data/db-fields.json").then((res) => {
       setDbFields(res.data);
-      setOptions(
-        [...dbFields.map((val) => ({
-          label: val.label,
-          value: val.value,
-        }))]
-      );
+      const opt = [...res.data.map((val:Option) => ({label: val.label,value: val.value}))]
+      setOptions(opt);      
     });
   };
 
@@ -176,21 +172,30 @@ const CustomQueryBuilder = () => {
                 />
               </QueryBuilderBootstrap>
             </div>
-            <div className="col-md-3 `mt-3">
+            <div className="col-md-3 mt-3">
               <div className="form-group">
                 <label>Schedule Report Date</label>
-                <input type="date" className="form-control" name="" id="" />                
+                <input type="date" className="form-control" name="" id="" />
               </div>
             </div>
             <div className="col-md-3 mt-3">
               <div className="form-group">
-                <label>Schedule Report Time</label>              
+                <label>Schedule Report Time</label>
                 <input type="time" className="form-control" name="" id="" />
+              </div>
+            </div>
+            <div className="col-md-3 mt-4">
+              <div className="form-group mt-3">
+                <input
+                  type="button"
+                  value="Schedule"
+                  className="btn btn-primary btn-sm"
+                />
               </div>
             </div>
           </div>
         </div>
-        <div className="card-footer text-center">
+        <div className="card-footer text-end">
           <button className="btn btn-primary btn-sm">
             <i className="bi bi-bar-chart"></i> Get Report
           </button>

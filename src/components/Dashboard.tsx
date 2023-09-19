@@ -203,6 +203,7 @@ const Dashboard = () => {
             </div>
           </div>
         </Tab>
+        <Tab eventKey="scheduled" title = "Scheduled Reports"></Tab>
       </Tabs>
     </>
   );
