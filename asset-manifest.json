@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/IntelliQuest/static/css/main.7dabe6ff.css",
-    "main.js": "/IntelliQuest/static/js/main.40e57907.js",
+    "main.css": "/IntelliQuest/static/css/main.1f53c258.css",
+    "main.js": "/IntelliQuest/static/js/main.6757423d.js",
     "static/js/787.ab04f6f5.chunk.js": "/IntelliQuest/static/js/787.ab04f6f5.chunk.js",
     "static/media/bootstrap-icons.woff?": "/IntelliQuest/static/media/bootstrap-icons.4753c5ba57962b4d7bf8.woff",
     "static/media/bootstrap-icons.woff2?": "/IntelliQuest/static/media/bootstrap-icons.6d63d0501e5ed7b79dab.woff2",
     "index.html": "/IntelliQuest/index.html",
-    "main.7dabe6ff.css.map": "/IntelliQuest/static/css/main.7dabe6ff.css.map",
-    "main.40e57907.js.map": "/IntelliQuest/static/js/main.40e57907.js.map",
+    "main.1f53c258.css.map": "/IntelliQuest/static/css/main.1f53c258.css.map",
+    "main.6757423d.js.map": "/IntelliQuest/static/js/main.6757423d.js.map",
     "787.ab04f6f5.chunk.js.map": "/IntelliQuest/static/js/787.ab04f6f5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7dabe6ff.css",
-    "static/js/main.40e57907.js"
+    "static/css/main.1f53c258.css",
+    "static/js/main.6757423d.js"
   ]
 }
