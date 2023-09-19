@@ -78,8 +78,13 @@ const CustomQueryBuilder = () => {
   const getColumnsList = () => {
     axios.get("/data/db-fields.json").then((res) => {
       setDbFields(res.data);
-      const opt = [...res.data.map((val:Option) => ({label: val.label,value: val.value}))]
-      setOptions(opt);      
+      const opt = [
+        ...res.data.map((val: Option) => ({
+          label: val.label,
+          value: val.value,
+        })),
+      ];
+      setOptions(opt);
     });
   };
 
@@ -172,20 +177,11 @@ const CustomQueryBuilder = () => {
                 />
               </QueryBuilderBootstrap>
             </div>
-            <div className="col-md-3 mt-3">
-              <div className="form-group">
-                <label>Schedule Report Date</label>
-                <input type="date" className="form-control" name="" id="" />
-              </div>
-            </div>
-            <div className="col-md-3 mt-3">
-              <div className="form-group">
-                <label>Schedule Report Time</label>
-                <input type="time" className="form-control" name="" id="" />
-              </div>
-            </div>
-            <div className="col-md-3 mt-4">
-              <div className="form-group mt-3">
+            <div className="col-md-12 mt-3">
+              <label>Schedule Report Date & Time</label>
+              <div className="input-group">
+                <input type="date" min={new Date().toJSON().slice(0, 10)} className="form-control" name="" id="" />
+                <input type="time"  className="form-control" name="" id="" />
                 <input
                   type="button"
                   value="Schedule"
@@ -195,7 +191,7 @@ const CustomQueryBuilder = () => {
             </div>
           </div>
         </div>
-        <div className="card-footer text-end">
+        <div className="card-footer text-center">
           <button className="btn btn-primary btn-sm">
             <i className="bi bi-bar-chart"></i> Get Report
           </button>
