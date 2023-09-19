@@ -1,0 +1,26 @@
+[
+    {
+        "id": "1",
+        "databaseId": "1",
+        "tableName": "tbl_client",
+        "displayName":"Client"
+    },
+    {
+        "id": "2",
+        "databaseId": "1",
+        "tableName": "tbl_member",
+        "displayName":"Member"
+    },
+    {
+        "id": "3",
+        "databaseId": "2",
+        "tableName": "tbl_benefit",
+        "displayName":"Benefit"
+    },
+    {
+        "id": "4",
+        "databaseId": "2",
+        "tableName": "tbl_plans",
+        "displayName":"Plans"
+    }
+]

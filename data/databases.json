@@ -1,0 +1,17 @@
+[
+    {
+        "id":"1",
+        "serverId":"1",
+        "databaseName":"DataWhse"
+    },
+    {
+        "id":"2",
+        "serverId":"1",
+        "databaseName":"VitalObjects"
+    },
+    {
+        "id":"3",
+        "serverId":"1",
+        "databaseName":"ggrrptd1"
+    }
+]
