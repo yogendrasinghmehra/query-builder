@@ -21,4 +21,15 @@ interface Option {
   label: string;
 }
 
-export type { DBServer, Database, Option, DbTables };
+interface DbField {
+  id:string;
+  name:string;
+  value: string;
+  label: string;
+  inputType:string;
+  dbTableName:string;
+  dbName:string;
+  relationShip:string;
+}
+
+export type { DBServer, Database, Option, DbTables,DbField };

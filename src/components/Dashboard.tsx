@@ -185,6 +185,18 @@ const Dashboard = () => {
             <div className="col-md-7">
               <div className="card">
                 <div className="card-body">
+                <div className="row">
+                      <div className="col-md-10">
+                        {/* <h5 className="card-title">
+                          Client <span>/Report</span>
+                        </h5> */}
+                      </div>
+                      <div className="col-md-2 card-title text-end">
+                        <button className="btn btn-outline-primary btn-sm">
+                          <i className="bi bi-arrow-bar-down"></i> Export
+                        </button>
+                      </div>
+                    </div>
                   <Report Type={selectedValue} />
                 </div>
               </div>

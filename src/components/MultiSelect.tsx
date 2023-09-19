@@ -68,16 +68,19 @@ const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
       {isOpen && (
         <div className="list-group" ref={divRef}>
           <div className="list-group-item" key="-99">
-            <div className="form-check">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                onChange={(e) => handleSelectAll(e.target.checked)}
-              />
-              <label className="form-check-label" htmlFor="Select All">
-                Select All
-              </label>
-            </div>
+            {options.length > 0 ? (
+              <div className="form-check">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  onChange={(e) => handleSelectAll(e.target.checked)}
+                />
+
+                <label className="form-check-label" htmlFor="Select All">
+                  Select
+                </label>
+              </div>
+            ) : <div className="list-group-item">No item</div>}
           </div>
           {options.map((option) => (
             <div className="list-group-item" key={option.value}>
