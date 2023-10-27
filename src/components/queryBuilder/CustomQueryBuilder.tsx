@@ -41,16 +41,22 @@ const CustomQueryBuilder = () => {
   };
 
   const handleServerChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    getDataBaseList();
+    setDataBaseList([])
+    setDBTableList([]);
+    setDbFields([]);
+    getDataBaseList(event.target.value);
   };
 
   const handleDbChange = (db: any) => {
     const dbName = db.target.value;
     setSelectedDb(dbName);
-    getDBTableList();
+    setDBTableList([]);
+    setDbFields([]);
+    getDBTableList(db.target.value);
   };
   const handleTableChange = (table: any) => {
     setSelectedTable(table.target.value);
+    setDbFields([]);
     getColumnsList();
   };
 
@@ -61,16 +67,20 @@ const CustomQueryBuilder = () => {
     });
   };
   //getting database list
-  const getDataBaseList = () => {
+  const getDataBaseList = (serverId:string) => {
     axios.get("/data/databases.json").then((res) => {
-      setDataBaseList(res.data);
+      const dbList:Database[] = res.data; 
+      const filterDbList = dbList.filter(d=>d.serverId === serverId);
+      setDataBaseList(filterDbList);
     });
   };
 
   //getting database table list
-  const getDBTableList = () => {
+  const getDBTableList = (dbId:string) => {
     axios.get("/data/dbTables.json").then((res) => {
-      setDBTableList(res.data);
+      const tableList:DbTables[] = res.data;
+      const filterData = tableList.filter(t=>t.databaseId === dbId); 
+      setDBTableList(filterData);
     });
   };
 
@@ -135,7 +145,7 @@ const CustomQueryBuilder = () => {
                 >
                   <option value="">Select</option>
                   {databaseList.map((db) => (
-                    <option key={db.id} value={db.databaseName}>
+                    <option key={db.id} value={db.id}>
                       {db.databaseName}
                     </option>
                   ))}
