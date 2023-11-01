@@ -23,6 +23,7 @@ interface Option {
 
 interface DbField {
   id:string;
+  tableId:string;
   name:string;
   value: string;
   label: string;

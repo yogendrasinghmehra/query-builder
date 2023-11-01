@@ -7,6 +7,7 @@ import MultiSelectDropdown from "../MultiSelect";
 import ApiEndpoints from "../services/Api";
 import { DBServer, Database, DbField, DbTables, Option } from "../types/Common";
 import axios from "axios";
+import { Accordion, Badge, Stack } from "react-bootstrap";
 
 //#region component types
 
@@ -22,12 +23,12 @@ const CustomQueryBuilder = () => {
   const [serverList, setServerList] = useState<DBServer[]>([]);
   const [databaseList, setDataBaseList] = useState<Database[]>([]);
   const [dbTableList, setDBTableList] = useState<DbTables[]>([]);
-  const [dbFields, setDbFields] = useState<DbField[]>([]);
-  const [options, setOptions] = useState<Option[]>([]);
+  // const [dbFields, setDbFields] = useState<DbField[]>([]);
+  const [options, setOptions] = useState<DbField[]>([]);
   const [selectedDb, setSelectedDb] = useState("");
   const [selectedTable, setSelectedTable] = useState("");
   const [query, setQuery] = useState(initialQuery);
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const [selectedOptions, setSelectedOptions] = useState<DbField[]>([]);
 
   //#endregion
 
@@ -35,15 +36,18 @@ const CustomQueryBuilder = () => {
   const handleQueryChange = (q: any) => {
     setQuery(q);
   };
-  const handleMultiSelectChange = (newSelectedOptions: string[]) => {
+  const handleMultiSelectChange = (newSelectedOptions: DbField[]) => {
+    console.log(newSelectedOptions);
     setSelectedOptions(newSelectedOptions);
-    //setDbFields([...dbFields.filter((f) => newSelectedOptions.includes(f.value))]);
+    // setDbFields([
+    //   ...dbFields.filter((f) => newSelectedOptions.includes(f)),
+    // ]);
   };
 
   const handleServerChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    setDataBaseList([])
+    setDataBaseList([]);
     setDBTableList([]);
-    setDbFields([]);
+    //setDbFields([]);
     getDataBaseList(event.target.value);
   };
 
@@ -51,13 +55,13 @@ const CustomQueryBuilder = () => {
     const dbName = db.target.value;
     setSelectedDb(dbName);
     setDBTableList([]);
-    setDbFields([]);
+    //setDbFields([]);
     getDBTableList(db.target.value);
   };
   const handleTableChange = (table: any) => {
     setSelectedTable(table.target.value);
-    setDbFields([]);
-    getColumnsList();
+    //setDbFields([]);
+    getColumnsList(table.target.value);
   };
 
   // getting server list
@@ -67,33 +71,29 @@ const CustomQueryBuilder = () => {
     });
   };
   //getting database list
-  const getDataBaseList = (serverId:string) => {
+  const getDataBaseList = (serverId: string) => {
     axios.get("/data/databases.json").then((res) => {
-      const dbList:Database[] = res.data; 
-      const filterDbList = dbList.filter(d=>d.serverId === serverId);
+      const dbList: Database[] = res.data;
+      const filterDbList = dbList.filter((d) => d.serverId === serverId);
       setDataBaseList(filterDbList);
     });
   };
 
   //getting database table list
-  const getDBTableList = (dbId:string) => {
+  const getDBTableList = (dbId: string) => {
     axios.get("/data/dbTables.json").then((res) => {
-      const tableList:DbTables[] = res.data;
-      const filterData = tableList.filter(t=>t.databaseId === dbId); 
+      const tableList: DbTables[] = res.data;
+      const filterData = tableList.filter((t) => t.databaseId === dbId);
       setDBTableList(filterData);
     });
   };
 
-  //getting database table list
-  const getColumnsList = () => {
+  //getting database column list
+  const getColumnsList = (tableId: string) => {
     axios.get("/data/db-fields.json").then((res) => {
-      setDbFields(res.data);
-      const opt = [
-        ...res.data.map((val: Option) => ({
-          label: val.label,
-          value: val.value,
-        })),
-      ];
+      // setDbFields([...res.data.filter((f: any) => f.tableId === tableId)]);
+
+      const opt = [...res.data.filter((f: any) => f.tableId === tableId)];
       setOptions(opt);
     });
   };
@@ -161,7 +161,7 @@ const CustomQueryBuilder = () => {
                 >
                   <option value="">Select</option>
                   {dbTableList.map((dbTable) => (
-                    <option key={dbTable.id} value={dbTable.databaseId}>
+                    <option key={dbTable.id} value={dbTable.id}>
                       {dbTable.displayName}
                     </option>
                   ))}
@@ -178,20 +178,37 @@ const CustomQueryBuilder = () => {
                 />
               </div>
             </div>
+            {/* <div className="col-md-12 mt-3">
+              <Accordion defaultActiveKey="0">
+                <Accordion.Item eventKey="0">
+                  <Accordion.Header>Selected Columns</Accordion.Header>
+                  <Accordion.Body>
+                    <span className="badge bg-primary m-1 p-2">Primary <i className="bi bi-x-circle"></i></span>
+                  </Accordion.Body>
+                </Accordion.Item>
+              </Accordion>
+            </div> */}
             <div className="col-md-12 mt-3">
               <QueryBuilderBootstrap>
                 <QueryBuilder
-                  fields={dbFields}
+                  fields={selectedOptions}
                   query={query}
                   onQueryChange={handleQueryChange}
                 />
               </QueryBuilderBootstrap>
             </div>
+
             <div className="col-md-12 mt-3">
               <label>Schedule Report Date & Time</label>
               <div className="input-group">
-                <input type="date" min={new Date().toJSON().slice(0, 10)} className="form-control" name="" id="" />
-                <input type="time"  className="form-control" name="" id="" />
+                <input
+                  type="date"
+                  min={new Date().toJSON().slice(0, 10)}
+                  className="form-control"
+                  name=""
+                  id=""
+                />
+                <input type="time" className="form-control" name="" id="" />
                 <input
                   type="button"
                   value="Schedule"
@@ -208,33 +225,32 @@ const CustomQueryBuilder = () => {
         </div>
       </div>
       <div className="row">
-        <div className="col-md-6"></div>
-        {/* <div className="col-md-6">
+        <div className="col-md-12">
           <div className="card">
             <div className="card-body">
               <div className="row">
                 <div className="col-md-12">
-                  <div className='p-3 '>
+                  <div className="p-3 ">
                     <code>
-                      {selectedDb && selectedTable && selectedOptions.length > 0 ? (
-                        `USE ${selectedDb}; 
-                  SELECT ${selectedOptions.join(',')} 
+                      {selectedDb && selectedTable && selectedOptions.length > 0
+                        ? `USE ${
+                            databaseList.find((d) => d.id === selectedDb)
+                              ?.databaseName
+                          }; 
+                  SELECT ${selectedOptions.map((o) => o.value).join(",")} 
                   FROM
                   ${selectedTable}
                   WHERE
-                  ${formatQuery(query, 'sql')}
+                  ${formatQuery(query, "sql")}
                   `
-                      ) : ''}
+                        : ""}
                     </code>
                   </div>
                 </div>
-
               </div>
             </div>
-
-
           </div>
-        </div> */}
+        </div>
       </div>
     </>
   );

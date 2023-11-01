@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { DbField } from "./types/Common";
 
 interface Option {
   value: string;
@@ -6,9 +7,9 @@ interface Option {
 }
 
 interface MultiSelectDropdownProps {
-  options: Option[];
-  selectedOptions: string[];
-  onChange: (selectedOptions: string[]) => void;
+  options: DbField[];
+  selectedOptions: DbField[];
+  onChange: (selectedOptions: DbField[]) => void;
 }
 
 const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
@@ -30,15 +31,15 @@ const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
     setIsOpen(!isOpen);
   };
 
-  const handleCheckboxChange = (optionValue: string) => {
-    const updatedSelectedOptions = selectedOptions.includes(optionValue)
-      ? selectedOptions.filter((value) => value !== optionValue)
+  const handleCheckboxChange = (optionValue: DbField) => {
+    const updatedSelectedOptions = selectedOptions.some(obj=>obj.id === optionValue.id)
+      ? selectedOptions.filter((value) => value.id !== optionValue.id)
       : [...selectedOptions, optionValue];
     onChange(updatedSelectedOptions);
   };
   const handleSelectAll = (value: boolean) => {
     if (value) {
-      onChange([...options.map((a) => a.value)]);
+      onChange([...options.map((a) => a)]);
     } else {
       onChange([]);
     }
@@ -60,9 +61,6 @@ const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
           selectedOptions.length === 0
             ? "Select"
             : selectedOptions.length + " fields selected"
-          // : selectedOptions.map((val, index) => (
-          //     <span className='badge bg-primary m-1'>{val}</span>
-          // ))
         }
       </div>
       {isOpen && (
@@ -90,8 +88,8 @@ const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
                   className="form-check-input"
                   type="checkbox"
                   value={option.value}
-                  checked={selectedOptions.includes(option.value)}
-                  onChange={() => handleCheckboxChange(option.value)}
+                  checked={selectedOptions.some(obj=>obj.id === option.id)}
+                  onChange={() => handleCheckboxChange(option)}
                 />
                 <label className="form-check-label" htmlFor={option.label}>
                   {option.label}

@@ -1,6 +1,7 @@
 [
     {
         "id": "1",
+        "tableId":"1",
         "name": "CST.customerId",
         "label": "Customer Id",
         "value":"CST.customerId",
@@ -11,6 +12,7 @@
     },
     {
         "id": "2",
+        "tableId":"1",
         "name": "CST.first_name",
         "label": "First Name",
         "value":"CST.first_name",
@@ -21,6 +23,7 @@
     },
     {
         "id": "3",
+        "tableId":"1",
         "name": "ORD.shsh",
         "label": "Order Id",
         "value":"ORD.order_id",
@@ -29,6 +32,7 @@
     },
     {
         "id": "4",
+        "tableId":"2",
         "name": "ORD.effectiveDate",
         "label": "Effective Date",
         "value":"ORD.effectiveDate",
@@ -37,6 +41,7 @@
     },
     {
         "id": "5",
+        "tableId":"2",
         "name": "ORD.PlanId",
         "label": "Plan Id",
         "value":"ORD.planId",
