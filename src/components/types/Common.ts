@@ -14,6 +14,7 @@ interface DbTables {
   databaseId: string;
   tableName: string;
   displayName: string;
+  tableAlias:string;
 }
 
 interface Option {
@@ -27,10 +28,15 @@ interface DbField {
   name:string;
   value: string;
   label: string;
-  inputType:string;
-  dbTableName:string;
-  dbName:string;
-  relationShip:string;
 }
 
-export type { DBServer, Database, Option, DbTables,DbField };
+interface JoinTable
+{
+  tableID:string;
+  selectedColumns:DbField[];
+  joinWithColumnId:string;
+  joinType:string;
+}
+
+
+export type { DBServer, Database, Option, DbTables,DbField,JoinTable };

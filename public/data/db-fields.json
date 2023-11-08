@@ -2,50 +2,38 @@
     {
         "id": "1",
         "tableId":"1",
-        "name": "CST.customerId",
-        "label": "Customer Id",
-        "value":"CST.customerId",
-        "inputType": "",
-        "dbTableName": "Customer",
-        "dbName": "VitalObjects",
+        "name": "BillingId",
+        "label": "Billing Id",
+        "value":"BillingId",
         "relationShip": ""
     },
     {
         "id": "2",
         "tableId":"1",
-        "name": "CST.first_name",
-        "label": "First Name",
-        "value":"CST.first_name",
-        "inputType": "",
-        "dbTableName": "Customer",
-        "dbName": "VitalObjects",
-        "relationShip": "INNER JOIN ON CST.id"
+        "name": "ClientId",
+        "label": "Client Id",
+        "value":"ClientId"
     },
     {
         "id": "3",
         "tableId":"1",
-        "name": "ORD.shsh",
-        "label": "Order Id",
-        "value":"ORD.order_id",
-        "dbTableName": "Order",
-        "relationShip": "INNER JOIN ON ORDER.id"
+        "name": "ClientName",
+        "label": "Client Name",
+        "value":"ClientName"
     },
     {
         "id": "4",
         "tableId":"2",
-        "name": "ORD.effectiveDate",
-        "label": "Effective Date",
-        "value":"ORD.effectiveDate",
-        "dbTableName": "Order",
-        "relationShip": "INNER JOIN ON ORDER.id"
+        "name": "ClientId",
+        "label": "Client Id",
+        "value":"ClientId"
     },
     {
         "id": "5",
         "tableId":"2",
-        "name": "ORD.PlanId",
-        "label": "Plan Id",
-        "value":"ORD.planId",
-        "dbTableName": "Order",
-        "relationShip": "INNER JOIN ON ORDER.id"
+        "name": "ClientBeneNm",
+        "label": "Client Benefit Name",
+        "value":"ClientBeneNm"
     }
+   
 ]
