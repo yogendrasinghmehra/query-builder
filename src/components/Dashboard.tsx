@@ -4,7 +4,7 @@ import { Tab, Tabs } from "react-bootstrap";
 import TreeView from "./Treeview";
 import Report from "../components/Report";
 import axios from "axios";
-import ApiEndpoints from "./services/Api";
+import ApiEndpoints from "../services/Api";
 
 const Dashboard = () => {
   const [selectedValue, setSelectedValue] = useState<string>("");
@@ -89,6 +89,25 @@ const Dashboard = () => {
       setIsLoading(false);
       setShowReportStaus(true);
     }, 1500); // Simulating a 2-second loading time
+  };
+
+  const handleExportClick = () => {
+    const url = `/Quest/ExportToExcel`;
+    ApiEndpoints.get(url).then((res) => {
+      console.log(res);
+      const url = window.URL.createObjectURL(
+        new Blob([res.data], {
+          type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',          
+        })
+      );
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', "sample");
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      
+    });
   };
   return (
     <>
@@ -179,31 +198,34 @@ const Dashboard = () => {
             <h5>Add Report Filter</h5>
           </div> */}
           <div className="row mt-3">
-            <div className="col-md-5">
+            <div className="col-md-6">
               <CustomQueryBuilder></CustomQueryBuilder>
             </div>
-            <div className="col-md-7">
+            <div className="col-md-6">
               <div className="card">
                 <div className="card-body">
-                <div className="row">
-                      <div className="col-md-10">
-                        {/* <h5 className="card-title">
+                  <div className="row">
+                    <div className="col-md-10">
+                      {/* <h5 className="card-title">
                           Client <span>/Report</span>
                         </h5> */}
-                      </div>
-                      <div className="col-md-2 card-title text-end">
-                        <button className="btn btn-outline-primary btn-sm">
-                          <i className="bi bi-arrow-bar-down"></i> Export
-                        </button>
-                      </div>
                     </div>
+                    <div className="col-md-2 card-title text-end">
+                      <button
+                        className="btn btn-outline-primary btn-sm"
+                        onClick={() => handleExportClick()}
+                      >
+                        <i className="bi bi-arrow-bar-down"></i> Export
+                      </button>
+                    </div>
+                  </div>
                   <Report Type={selectedValue} />
                 </div>
               </div>
             </div>
           </div>
         </Tab>
-        <Tab eventKey="scheduled" title = "Scheduled Reports"></Tab>
+        <Tab eventKey="scheduled" title="Scheduled Reports"></Tab>
       </Tabs>
     </>
   );

@@ -5,8 +5,8 @@ const ApiEndpoints = {
     return http.get("/todos");
   },
 
-  get: (id: string) => {
-    return http.get(`/todo/${id}`);
+  get: (url:string) => {
+    return http.get(url);
   }
 };
 

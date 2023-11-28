@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { DbField } from "./types/Common";
+import { DbField } from "../types/Common";
 
 interface Option {
   value: string;
@@ -10,12 +10,14 @@ interface MultiSelectDropdownProps {
   options: DbField[];
   selectedOptions: DbField[];
   onChange: (selectedOptions: DbField[]) => void;
+  disabled?:boolean
 }
 
 const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
   options,
   selectedOptions,
   onChange,
+  disabled
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const divRef = useRef<HTMLDivElement | null>(null);
@@ -63,7 +65,7 @@ const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
             : selectedOptions.length + " fields selected"
         }
       </div>
-      {isOpen && (
+      {isOpen && !disabled  && (
         <div className="list-group" ref={divRef}>
           <div className="list-group-item" key="-99">
             {options.length > 0 ? (
@@ -80,8 +82,8 @@ const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
               </div>
             ) : <div className="list-group-item">No item</div>}
           </div>
-          {options.map((option) => (
-            <div className="list-group-item" key={option.value}>
+          {options.map((option,index) => (
+            <div className="list-group-item" key={index}>
               <div className="form-check">
                 <input
                   id={option.label}
@@ -90,6 +92,7 @@ const MultiSelectDropdown: React.FC<MultiSelectDropdownProps> = ({
                   value={option.value}
                   checked={selectedOptions.some(obj=>obj.id === option.id)}
                   onChange={() => handleCheckboxChange(option)}
+                  
                 />
                 <label className="form-check-label" htmlFor={option.label}>
                   {option.label}

@@ -7,6 +7,53 @@
 
 .form-check-input{ border:0.1rem solid #0a58ca;}
 // .list-group-item{padding: 0.2rem;}
+.multi-select-dropdown 
+{
+    .list-group
+    {
+        height: 50vh;
+        overflow-y: auto;
 
+    }
+}
 
+/* Define css class for global loading message to cover 
+   screen during axios operations */
+
+$loader-size:50px;
+$loader-color:#3498db;
+$backdrop-color:rgba(0,0,0,0.5);
+
+.loader {
+position: fixed;
+top:50%;
+left:50%;
+transform: translate(-50%,-50%);
+width:$loader-size;
+height: $loader-size;
+border:4px solid $loader-color;
+border-top: 4px solid transparent;
+border-radius: 50%;
+animation: spin 1s linear infinite;
+}
+.backdrop{
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: $backdrop-color;
+z-index: 999;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+@keyframes spin{
+    0%{
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100%{
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
   

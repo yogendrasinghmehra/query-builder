@@ -1,14 +1,14 @@
 import { Route, Routes } from "react-router-dom";
-import Error from "./components/Error";
-import Report from "./components/Report";
 import Header from "./components/layout/Header";
-import Sidebar from "./components/layout/Sidebar";
 import Dashboard from "./components/Dashboard";
 import './App.scss';
-
 const App = () => {
     return (
+        
         <div className="App">
+            <div className="backdrop d-none" id="loader_div">
+                <div className="loader"></div>
+            </div>
             <Header />
             <div className="container-fluid mt-5">
                 <div className="row">

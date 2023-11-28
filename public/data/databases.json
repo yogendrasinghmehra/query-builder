@@ -1,17 +1,17 @@
 [
     {
-        "id":"1",
-        "serverId":"1",
+        "id":"DataWhse",
+        "serverId":"SQR6SQ3D.sunlifecorp.com\\V2D6F4",
         "databaseName":"DataWhse"
     },
     {
-        "id":"2",
-        "serverId":"1",
+        "id":"DataWhse",
+        "serverId":"SQR6SQ3D.sunlifecorp.com\\V2D6F4",
         "databaseName":"VitalObjects"
     },
     {
-        "id":"3",
-        "serverId":"1",
+        "id":"DataWhse",
+        "serverId":"SQR6SQ3D.sunlifecorp.com\\V2D6F4",
         "databaseName":"ggrrptd1"
     }
 ]

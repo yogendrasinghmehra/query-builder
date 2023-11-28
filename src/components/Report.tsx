@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
-import clientData from './data/clientData.json';
+import axios from 'axios';
 
 interface Client {
   id:number;
@@ -26,11 +26,9 @@ const Report:React.FC<ReportProps> = ({Type}) => {
   const [rowData, setData] = useState<Data>();
 
   useEffect(() => {
-    setData(clientData)
-    // fetch('../data/clientData.json') // URL to your local JSON file
-    //   .then((response) => response.json())
-    //   .then((json) => setData(json))
-    //   .catch((error) => console.error('Error fetching data:', error));
+    axios.get("/data/clientData.json").then((res) => {    
+      setData(res.data)        
+    });
   }, []);
 
   return (
